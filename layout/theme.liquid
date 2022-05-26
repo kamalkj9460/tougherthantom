@@ -1,0 +1,186 @@
+<!doctype html>
+<html>
+  <head>
+
+<script>
+/* >> TriplePixel :: start*/
+~function(W,H,A,L,E){try{A.setItem(H,1+(0|A.getItem(H)||0)),W.includes("⇈")&&A.setItem(H+"Stg",1+(0|A.getItem(H+"Stg")||0))}catch(e){}function O(T,R){void 0===R&&(R=!1),H=new XMLHttpRequest,H.open("GET","//triplewhale-pixel.web.app/triplepx.txt?"+~(Date.now()/9e7),!0),H.send(null),H.onreadystatechange=function(){4===H.readyState&&200===H.status?setTimeout(function(){return eval(H.responseText)},50):(299<H.status||H.status<200)&&T&&!R&&(R=!0,O(T-1))}}A=window,A[H]||(L=function(){return"tp.."+Date.now().toString(36)+Math.random().toString(36)},E=A[H]=function(t,e,n){return W=L(),(E._q=E._q||[]).push([W,e,n]),W},E.ch=W,O(5))}("","TriplePixel",localStorage);
+/* << TriplePixel :: end*/
+</script>
+
+
+<!--
+888888b.                              888                88888888888 888                                      
+888  "88b                             888                    888     888                                      
+888  .88P                             888                    888     888                                      
+8888888K.   .d88b.   .d88b.  .d8888b  888888 .d88b.  888d888 888     88888b.   .d88b.  88888b.d88b.   .d88b.  
+888  "Y88b d88""88b d88""88b 88K      888   d8P  Y8b 888P"   888     888 "88b d8P  Y8b 888 "888 "88b d8P  Y8b 
+888    888 888  888 888  888 "Y8888b. 888   88888888 888     888     888  888 88888888 888  888  888 88888888 
+888   d88P Y88..88P Y88..88P      X88 Y88b. Y8b.     888     888     888  888 Y8b.     888  888  888 Y8b.     
+8888888P"   "Y88P"   "Y88P"   88888P'  "Y888 "Y8888  888     888     888  888  "Y8888  888  888  888  "Y8888  
+-->
+    <title>
+      {{ page_title }}{% if current_tags %} &ndash; tagged "{{ current_tags |
+      join: ', ' }}"{% endif %}{% if current_page != 1 %} &ndash; Page {{
+      current_page }}{% endif %}{% unless page_title contains shop.name %}
+      &ndash; {{ shop.name }}{% endunless %}
+    </title>
+    {% if page_description %}
+    <meta name="description" content="{{ page_description | escape }}" />
+    {% endif %}
+    <link rel="canonical" href="{{ canonical_url }}" />
+    <link href="https://static.boostertheme.co" rel="preconnect" crossorigin>
+    <link rel="dns-prefetch" href="//static.boostertheme.co">
+    <link href="https://theme.boostertheme.com" rel="preconnect" crossorigin>
+    <link rel="dns-prefetch" href="//theme.boostertheme.com">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+
+    {% render 'layout__favicon' %}
+
+    {{ content_for_header }}
+
+    <style>
+      {% render 'global-scss' %}
+    </style>
+    {% unless settings.headHTML == blank %}
+      {{settings.headHTML}}
+    {% endunless %}
+    {% unless settings.headJS == blank %}
+      <script>
+      {{settings.headJS}}
+      </script>
+    {% endunless %}
+    {% render 'layout__custom-code--head' %}
+    
+    <!-- CUSTOM CODE FOR GOOGLE TAG MANAGER -->
+    <!-- Global site tag (gtag.js) - Google Ads: 10890319303 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-10890319303"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-10890319303');
+    </script>
+    <!-- END GTM -->
+  </head>
+  <body class="template--{{template}}">
+          <!--
+888888b.                              888                88888888888 888                                      
+888  "88b                             888                    888     888                                      
+888  .88P                             888                    888     888                                      
+8888888K.   .d88b.   .d88b.  .d8888b  888888 .d88b.  888d888 888     88888b.   .d88b.  88888b.d88b.   .d88b.  
+888  "Y88b d88""88b d88""88b 88K      888   d8P  Y8b 888P"   888     888 "88b d8P  Y8b 888 "888 "88b d8P  Y8b 
+888    888 888  888 888  888 "Y8888b. 888   88888888 888     888     888  888 88888888 888  888  888 88888888 
+888   d88P Y88..88P Y88..88P      X88 Y88b. Y8b.     888     888     888  888 Y8b.     888  888  888 Y8b.     
+8888888P"   "Y88P"   "Y88P"   88888P'  "Y888 "Y8888  888     888     888  888  "Y8888  888  888  888  "Y8888  
+-->
+    <div class="container">
+      <div class="container__top-part">
+        {% section 'top-info-bar' %}
+        
+        <div id="booster__popup--holder" class="booster__popup--holder">
+        </div>
+
+        {% if template.suffix == 'no-header' or template.suffix == 'landing-no-header' %}
+        {% elsif template.suffix == 'landing-alt-header' %}
+          {% section 'header-alt' %}
+        {% else %}
+          {% case settings.headerType %}
+            {% when 'default' %}
+              {% section 'header--default' %}
+            {% when 'inline-search' %}
+              {% section 'header--inline-search' %}
+            {% when 'logo-top' %}
+              {% section 'header--logo-top' %}
+          {% endcase %}
+        {% endif %}
+
+        {% section 'bottom-info-bar' %}
+      </div> 
+
+      <div id="quickbuy__modal" class="modal"><div onclick="closeModal(event)" class="overlay"></div><div class="content"></div></div>
+
+      {% if settings.recentlyBought %}
+        <a id="recently-bought--holder" class="recently-bought--holder {% unless settings.recentlyBoughtMobile -%}hide-mobile{%-endunless-%}">
+          <div class="recently-bought--img-ratio"><div class="recently-bought--img"><img src=""></div></div>
+          <div class="recently-bought--info">
+            <div class="recently-bought--who"></div>
+            <div class="recently-bought--what"></div>
+            <div class="recently-bought--price"><span class="current-price"></span><span class="old-price"></span></div>
+            <div class="recently-bought--when"></div>
+          </div>
+        </a>
+        <script>
+          const recentlyBoughtConfig = { useNames: {{settings.recentlyBoughtNames}}, nameFormat: '{{settings.recentlyBoughtNameFormat}}', allProductsUrl: '{{routes.all_products_collection_url}}' }
+        </script>
+      {% endif %}
+
+      <div class="add-to-cart__success--holder modal">
+        {% unless settings.cartAction == 'message' %}<div onclick="closeModal(event)" class="overlay add-to-cart__success--overlay"></div>{% endunless %}
+        <div class="add-to-cart__success" id="checkout--success">
+        {% render 'add-to-cart__template--success' %}
+        </div>
+      </div>
+
+      {% render 'layout__template--specific' %}
+
+      <main role="main">
+        {{ content_for_layout }}
+
+        <div class="wrapper--bottom">
+          {% section 'info-badges' %}
+          {% section 'footer' %}
+          {% section 'subfooter' %}
+        </div>
+      </main>
+    </div>
+
+    {% render 'layout__app--code' %}
+    {% render 'layout__bstr--constants' %}
+
+    {{ "/services/javascripts/currencies.js" | script_tag }}
+    <script src="https://static.boostertheme.co/?files=supportscreen,6.0/theme.6.0" onload="initTheme();"></script>
+    {{ 'unicons.css' | asset_url | stylesheet_tag }}
+ 
+    {% unless settings.bodyHTML == blank %}
+      {{settings.bodyHTML}}
+    {% endunless %}
+    {% unless settings.bodyCSS == blank %}
+      <style>
+        {{settings.bodyCSS}}
+      </style>
+    {% endunless %}
+    {% unless settings.bodyJS == blank %}
+      <script>
+        {{settings.bodyJS}}
+      </script>
+    {% endunless %}
+    {% if settings.reviewApp == "alireviews" or settings.jQuery %}
+      <script
+        src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+        crossorigin="anonymous">
+      </script>
+    {% endif %}
+    {% render 'layout__custom-code--body' %}
+  <!--
+888888b.                              888                88888888888 888                                      
+888  "88b                             888                    888     888                                      
+888  .88P                             888                    888     888                                      
+8888888K.   .d88b.   .d88b.  .d8888b  888888 .d88b.  888d888 888     88888b.   .d88b.  88888b.d88b.   .d88b.  
+888  "Y88b d88""88b d88""88b 88K      888   d8P  Y8b 888P"   888     888 "88b d8P  Y8b 888 "888 "88b d8P  Y8b 
+888    888 888  888 888  888 "Y8888b. 888   88888888 888     888     888  888 88888888 888  888  888 88888888 
+888   d88P Y88..88P Y88..88P      X88 Y88b. Y8b.     888     888     888  888 Y8b.     888  888  888 Y8b.     
+8888888P"   "Y88P"   "Y88P"   88888P'  "Y888 "Y8888  888     888     888  888  "Y8888  888  888  888  "Y8888  
+-->
+    
+    <!-- Stamped - Begin Script-->
+    <script async type="text/javascript" data-api-key="" id="stamped-script-widget" src="https://cdn-stamped-io.azureedge.net/files/widget.min.js"></script>
+    <!-- Stamped - End Script -->
+  
+{% render 'oneclickupsellapp-theme', oneclickupsellapp: oneclickupsellapp %}
+{% assign oneclickupsellapp = true %}
+</body>
+</html>
