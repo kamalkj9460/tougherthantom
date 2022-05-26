@@ -22,7 +22,7 @@
 {% if settings.messengerID != 'Your page ID here' and settings.messenger %}
     {% unless settings.optimizedMessenger %}
         <div id="fb-root"></div>
-        <script>
+        <script type="lazyload2">
         window.fbAsyncInit = function() {
             FB.init({
             xfbml            : true,
@@ -37,7 +37,7 @@
         logged_in_greeting="{{settings.messengerGreeting}}"
         logged_out_greeting="{{settings.messengerGreeting}}">
         </div>
-        <script id="facebook-jssdk" src="https://connect.facebook.net/{{-settings.messengerLang-}}/sdk/xfbml.customerchat.js" async defer></script>
+        <script type="lazyload2" id="facebook-jssdk" data-src="https://connect.facebook.net/{{-settings.messengerLang-}}/sdk/xfbml.customerchat.js"></script>
     {% else %}
         <a target="_blank" href="https://m.me/{{settings.messengerID}}" style="background: {{settings.messengerColor}};color: {% if settings.messengerColor == '#ffffff' %}black{% else %}white{%endif%}" class="messenger--simple"><i class="uil uil-facebook-messenger"></i></a>
     {% endunless %}

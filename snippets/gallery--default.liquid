@@ -3,7 +3,7 @@
         <span class="gallery__thumbnail {% if forloop.first %}bstrSlider__thumb--active{%endif%}" data-media-type="image" data-bstr-slider-for="{{section.id}}" data-bstr-slider-thumb="{{forloop.index0}}"
         {% if section.settings.autoChange %}data-bstr-slider-thumb-hover{% endif %}
             >
-            <img height="{{image.height}}" width="{{image.width}}" src="{{image.src|img_url: '200x'}}" alt="Thumbnail for {{image.alt}}">
+            <img height="{{image.height}}" width="{{image.width}}" class="lazy2 lazy3" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{image.src|img_url: '200x'}}" alt="Thumbnail for {{image.alt}}">
         </span>
         {% assign currentIndex = forloop.index0 | plus: 1 %}
     {% endfor %}
@@ -37,7 +37,12 @@
 <div class="slider--product" data-bstr-slider-height="auto" data-bstr-slider-orientation="horizontal" data-bstr-slide-holder="1" data-bstr-slider-current="0">
     {% for image in product.images %}
         <div data-variants="|{% for var in image.variants %}{{var.options| join: '#' | escape}}|{% endfor %}" class="slide--product" data-bstr-slide>
-            <img height="{{image.height}}" width="{{image.width}}" {% unless forloop.first %}loading="lazy"  class="lazyload"{% endunless %} alt="{{image.alt | escape}}" src="{{ image.src | img_url: '1280x' }}">
+            {% if forloop.first == true %}
+					<img height="{{image.height}}" width="{{image.width}}" loading="lazy"  class="lazyloaded lazy2 lazy3"  alt="{{image.alt | escape}}" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{ image.src | img_url: '1080x' }}" data-mobsrc="{{ image.src | img_url: '540x' }}">
+            {% else %}
+					<img height="{{image.height}}" width="{{image.width}}" loading="lazy"  class="lazyloaded lazy2"  alt="{{image.alt | escape}}" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-src="{{ image.src | img_url: '1080x' }}" data-mobsrc="{{ image.src | img_url: '540x' }}">	
+            {% endif %}
+            
         </div>
     {% endfor %}
     {% for media in product.media %}

@@ -7,8 +7,11 @@
 </style>
 
 <div 
-class="slide--{{-block.id}} lazyload slide {%if first%}slide__animation{%endif%} {{block.settings.verticalAlignment}} bg__{{block.settings.backgroundPosition}}" 
-style="background-color: {{block.settings.backgroundColor}};{% unless block.settings.backgroundImage == nil %}background-image: url({{ block.settings.backgroundImage | img_url: '10x'}});{% endunless %}" {% unless block.settings.backgroundImage == nil %}{% render 'background', image: block.settings.backgroundImage %}{% else %}{%if settings.demo %}data-bgset="https://source.unsplash.com/random/1280x720"{% endif %}{%endunless%} {{ block.shopify_attributes }}>
+class="slide--{{-block.id}} lazyloaded lazybg lazybg2 slide {%if first%}slide__animation{%endif%} {{block.settings.verticalAlignment}} bg__{{block.settings.backgroundPosition}}" 
+style="background-color: {{block.settings.backgroundColor}};{% unless block.settings.backgroundImage == nil %}background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=);{% endunless %}"
+data-style="background-color: {{block.settings.backgroundColor}};{% unless block.settings.backgroundImage == nil %}background-image: url({{ block.settings.backgroundImage | img_url: '1280x'}});{% endunless %}" {% unless block.settings.backgroundImage == nil %}{% render 'background', image: block.settings.backgroundImage %}{% else %}{%if settings.demo %}data-bgset="https://source.unsplash.com/random/1280x720"{% endif %}{%endunless%}
+data-mobstyle="background-color: {{block.settings.backgroundColor}};{% unless block.settings.backgroundImage == nil %}background-image: url({{ block.settings.backgroundImage | img_url: '450x'}});{% endunless %}" {% unless block.settings.backgroundImage == nil %}{% render 'background', image: block.settings.backgroundImage %}{% else %}{%if settings.demo %}data-bgset="https://source.unsplash.com/random/1280x720"{% endif %}{%endunless%}{{ block.shopify_attributes }}>
+
 {% if settings.demo == false and block.settings.backgroundImage == nil %}
 <div class="slide__fakeImage">{{'lifestyle-1' | placeholder_svg_tag }}</div>
 {% endif %}
